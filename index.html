@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二次函數配方法</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* position: relative; */
+            margin: 0 auto;
+            min-width: 320px;
+            max-width: 750px;
+            background-color: skyblue;
+            font-size: .4rem;
+            font-weight: bolder;
+            height: 2000px;
+            color: #000;
+
+        }
+
+
+        @media screen and (min-width:750px) {
+            html {
+                font-size: 75px !important;
+            }
+        }
+
+        button {
+            border: 0;
+
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            padding: 0 .1333rem;
+            height: 1.3333rem;
+            font-size: .6667rem;
+            font-weight: bolder;
+            /* color: #000; */
+            background-color: whitesmoke;
+            line-height: 1.3333rem;
+            border: 1px solid #ccc;
+
+        }
+
+
+
+
+
+        .input-box {
+            position: fixed;
+            right: .2667rem;
+            bottom: 1.3333rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: start;
+            width: 4.6154rem;
+            height: 4.6154rem;
+            background-color: #fff;
+            /* background-color: pink; */
+        }
+
+        .input-box button,
+        input {
+            width: 25%;
+            height: 25%;
+            border: 1px solid #fff;
+            font-size: .7692rem;
+            cursor: pointer;
+            transition: all .2;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .input-box input:nth-of-type(2) {
+            width: 100%;
+        }
+
+        .input-box button:active {
+            scale: 1.1;
+        }
+
+        .input-box input:active {
+            scale: 1.1;
+        }
+
+        .main {
+            padding-bottom: 6.6667rem;
+        }
+
+        .caption {
+            display: flex;
+            font-size: .3333rem;
+            text-align: center;
+        }
+
+        .caption span {
+            width: 14.28571428571429%;
+            border: 1px solid #000;
+            /* background-color: skyblue; */
+        }
+
+        div[class^=row] {
+            display: flex;
+            font-size: .24rem;
+            text-align: center;
+        }
+
+
+        div[class^=row] span {
+            padding: 0 .0667rem;
+            width: 14.28571428571429%;
+            height: .4667rem;
+            border: 1px solid #000;
+            /* background-color: skyblue; */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: .4667rem;
+        }
+
+        div[class^=row] span:nth-child(-n + 2) {
+            text-align: left;
+        }
+
+        .region-1 {
+            /* display: none; */
+            display: block;
+        }
+
+        .region-2 {
+            display: none;
+            padding-left: .0667rem;
+            font-size: .4rem;
+            line-height: .8rem;
+        }
+
+        .region-2 .title {
+            font-size: .4267rem;
+        }
+
+        .region-2 a {
+            display: block;
+        }
+
+        .axis span{
+            margin: 0 .0267rem;
+        }
+
+
+    </style>
+
+
+</head>
+
+<body>
+    <section class="region-1">
+        <div class="header"></div>
+
+        <div class="main">
+            <div class="caption">
+                <span>原函數</span>
+                <span>新函數</span>
+                <span>開口方向</span>
+                <span>頂點</span>
+                <span>最大值</span>
+                <span>最小值</span>
+                <span>操作</span>
+            </div>
+        </div>
+
+        <div class="input-box">
+            <button type="button" id="y">y=</button>
+            <button type="button" id="x-squared">x²</button>
+            <button type="button" id="x">x</button>
+            <input type="button" id="backSpace" value="C">
+
+            <button type="button" id="nine">9</button>
+            <button type="button" id="eight">8</button>
+            <button type="button" id="seven">7</button>
+            <button type="button" id="plus">+</button>
+
+            <button type="button" id="four">4</button>
+            <button type="button" id="five">5</button>
+            <button type="button" id="six">6</button>
+            <button type="button" id="minus">-</button>
+
+            <button type="button" id="one">1</button>
+            <button type="button" id="two">2</button>
+            <button type="button" id="three">3</button>
+            <button type="button" id="zero">0</button>
+
+            <input type="button" id="answer" value="Answer">
+        </div>
+    </section>
+
+
+    <section class="region-2">        
+    </section>
+
+
+
+
+    <script>
+        (function flexible(window, document) {//首先是一个立即执行函数，执行的时候传入参数window,document
+            var docEl = document.documentElement //返回文档的root元素，即根元素html
+            var dpr = window.devicePixelRatio || 1 //获取设备的dpr，即当前设置下物理像素与虚拟像素的比值
+
+
+            //调整body标签的fontSize
+            //设置默认字体的大小，默认字体的大小继承自body
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = (12 * dpr) + 'px'
+                } else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+            setBodyFontSize();
+
+            //设置 1rem = viewWidth / 10
+            function setRemUnit() {
+                var rem = docEl.clientWidth / 10
+                docEl.style.fontSize = rem + 'px'
+            }
+
+            setRemUnit();
+
+            //在页面resize或者pageshow重新设置rem
+            window.addEventListener('resize', setRemUnit)
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {//某些浏览器，重新展示页面时，走的是页面展示缓存
+                    setRemUnit();
+                }
+            })
+
+            //检测0.5px的支持，支持则root元素的class有hairlines
+            //解决1px在高清屏多像素问题
+            if (dpr >= 2) {
+                var fakeBody = document.createElement('doby');
+                var testElement = document.createElement('div');
+                testElement.style.border = '.5px solid transparent'
+                fakeBody.appendChild(testElement);
+                docEl.appendChild(fakeBody);
+                if (testElement.offsetHeight === 1) {
+                    docEl.classList.add('hairlines')
+                }
+                docEl.removeChild(fakeBody)
+            }
+        }(window, document))
+
+    </script>
+    <script>
+        obj1 = /^y=([+-]?\d+)x²([+]\d+|[-]\d+)x([+]\d+|[-]\d+)/    // 2x²+4x-5
+        obj2 = /^y=([+-]?)x²([+]\d+|[-]\d+)x([+]\d+|[-]\d+)/       // x²+4x-5
+        obj3 = /^y=([+-]?)x²([+-]?)x([+]\d+|[-]\d+)/               // x²+x-5
+        obj4 = /^y=([+-]?\d+)x²([+-]?)x([+]\d+|[-]\d+)/               // 2x²+x-5
+        regionOne = document.querySelector(".region-1")
+        regionTwo = document.querySelector(".region-2")
+        textArea = document.querySelector(".header")
+        btns = document.querySelectorAll("button")
+
+        main = document.querySelector(".main")
+        rows = document.querySelectorAll("[class^=row]")
+        
+
+        btnBackSpace = document.getElementById("backSpace").addEventListener("click", () => {
+            length = textArea.textContent.length
+            textArea.textContent = textArea.textContent.slice(0, length - 1)
+
+        })
+
+
+        function inputValue() {
+            textArea.textContent += this.textContent
+        }
+
+        for (let btn of btns) {
+            btn.addEventListener("click", inputValue)
+        }
+
+
+
+        function method(equation) {
+            let d = null
+            let k = null
+            let result = []
+            equation.b = equation.b / equation.a
+            d = (equation.b / 2) ** 2
+            k = equation.a < 0 ? equation.c + Math.abs(equation.a * d) : equation.c - Math.abs(equation.a * d)
+
+
+            if (equation.b > 0 && k > 0) {
+                // alert(`解为：${equation.a}(x+${equation.b / 2})²+${k}`)
+                result.push(`y=${equation.a}(x+${equation.b / 2})²+${k}`)
+            } else if (equation.b < 0 && k < 0) {
+                // alert(`解为：${equation.a}(x${equation.b / 2})²${k}`)
+                result.push(`y=${equation.a}(x${equation.b / 2})²${k}`)
+            } else if (equation.b > 0 && k < 0) {
+                // alert(`解为：${equation.a}(x+${equation.b / 2})²${k}`)
+                result.push(`y=${equation.a}(x+${equation.b / 2})²${k}`)
+            } else if (equation.b < 0 && k > 0) {
+                // alert(`解为：${equation.a}(x${equation.b / 2})²+${k}`)
+                result.push(`y=${equation.a}(x${equation.b / 2})²+${k}`)
+            } else if (equation.b > 0 && k == 0) {
+                result.push(`y=${equation.a}(x+${equation.b / 2})²`)
+            } else if (equation.b < 0 && k == 0) {
+                result.push(`y=${equation.a}(x${equation.b / 2})²`)
+            }
+
+
+
+            if (equation.a > 0) {
+                result.push("向上")
+                result.push(`(${-equation.b / 2}, ${k})`)
+                result.push("")
+                result.push(k)
+
+            } else {
+                result.push("向下")
+                result.push(`(${-equation.b / 2}, ${k})`)
+                result.push(k)
+                result.push("")
+            }
+            return result
+        }
+
+
+        function detail() {
+            regionOne.style.display = "none"
+            values = this.parentNode.parentNode.children
+
+            baseValues = values[3].textContent.replace("(", "").replace(")", "").split(",") 
+            a = +/([+-]*\d+)[(]/.exec(values[1].textContent)[1]
+            h = +baseValues[0]
+            k = +baseValues[1]
+            console.log(a, h, k);
+            
+            result = []
+
+            for (let i = 1; i < 3; i++){
+                result.push(a * (h + i + -h)**2  + k)
+            }
+
+            regionTwo.insertAdjacentHTML("beforeend", `
+            <div class="detail-area">
+                <div class="title">詳細資料如下</div>
+                <div>原函數：${values[0].textContent}</div>
+                <div>新函數：${values[1].textContent}</div>
+                <div>開口方向：${values[2].textContent}</div>
+                <div>頂點坐標：${values[3].textContent}</div>
+                <div>最大值：${values[4].textContent}</div>
+                <div>最小值：${values[5].textContent}</div>
+                <div class="axis">圖形坐標：
+                    <span>(${h - 2}, ${result[1]})</span>
+                    <span>(${h - 1}, ${result[0]})</span>
+                    <span>(${h}, ${k})</span>
+                    <span>(${h + 1}, ${result[0]})</span>
+                    <span>(${h + 2}, ${result[1]})</span></div>
+                <a href="javascript:;">返回</a>
+            </div>`)
+            regionTwo.style.display = "block"
+
+            document.querySelector(".detail-area a").addEventListener("click", back)
+
+
+
+        }
+
+        function back() {
+            detailArea = document.querySelector(".detail-area").remove()
+            regionTwo.style.display = "none"
+            regionOne.style.display = "block"
+        }
+
+        btnAnswer = document.getElementById("answer").addEventListener("click", () => {
+            text = textArea.textContent
+            equation = {}
+            if (obj1.test(text) === true) {
+                values = obj1.exec(text)
+                equation.a = +values[1]
+                equation.b = +values[2]
+                equation.c = +values[3]
+                // method(equation)
+            } else if (obj2.test(text) === true) {
+                values = obj2.exec(text)
+                equation.a = +(values[1] + 1) // +("" + 1)
+                equation.b = +values[2]
+                equation.c = +values[3]
+                // method(equation)
+            } else if (obj3.test(text) === true) {
+                values = obj3.exec(text)
+                equation.a = +(values[1] + 1)
+                equation.b = +(values[2] + 1)
+                equation.c = +values[3]
+                // method(equation)
+            } else if (obj4.test(text) === true) {
+                values = obj4.exec(text)
+                equation.a = +values[1]
+                equation.b = +(values[2] + 1)
+                equation.c = +values[3]
+                // method(equation)
+            }
+
+            result = method(equation)
+
+
+            main.insertAdjacentHTML("beforeend",
+                `<div class="row-${rows.length + 1}">
+                <span>${textArea.textContent}</span>
+                <span>${result[0]}</span>
+                <span>${result[1]}</span>
+                <span>${result[2]}</span>
+                <span>${result[3]}</span>
+                <span>${result[4]}</span>
+                <span><a href="javascript:;">詳細</a></span>
+            </div>`
+            )
+
+            links = document.querySelectorAll("[class^=row] a")
+            links[links.length-1].addEventListener("click", detail)
+        })
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
