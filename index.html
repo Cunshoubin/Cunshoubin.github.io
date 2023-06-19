@@ -39,11 +39,21 @@
 
         }
 
-        .header {
+        a {
+            display: block;
+            text-decoration: none;
+        }
+
+        a:active {
+            color: darkblue;
+        }
+
+        .text-area {
             position: sticky;
             top: 0;
             left: 0;
             padding: 0 .1333rem;
+            padding-right: .3333rem;
             height: 1.3333rem;
             font-size: .6667rem;
             font-weight: bolder;
@@ -57,11 +67,19 @@
 
         }
 
-
+        .text-area a {
+            position: absolute;
+            right: .0667rem;
+            top: 50%;
+            transform: translate(0, -50%);
+            font-size: .2667rem;
+            /* background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAydpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDkuMC1jMDAxIDc5LmMwMjA0YjJkZWYsIDIwMjMvMDIvMDItMTI6MTQ6MjQgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyNC4zIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpCNTZDRjYzNUQ4N0IxMUVEQjAyM0Q1MTYzREJGNTg0NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpCNTZDRjYzNkQ4N0IxMUVEQjAyM0Q1MTYzREJGNTg0NCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkI1NkNGNjMzRDg3QjExRURCMDIzRDUxNjNEQkY1ODQ0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkI1NkNGNjM0RDg3QjExRURCMDIzRDUxNjNEQkY1ODQ0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+1CMP8gAAAZ9JREFUeNqklctKQlEUhrcaFSQ00egGDWpYdBs18B0M1DeoQZdZKL1AoAY1SIPsCZLK3qMbjQ0SCgc1EWxQUPT/uLbsc872ki74YbPWXh97r73OOr7Kwryy2CAUFa1Bk9A39Ao9QNfQjfgc5rMA16EMNKfaWxlKQVem02+sA1BaNnSCKdlzKTkB7RwwNhxASfV/0zkp84SxHmEmNKaBfIAjRx2CI2osl1dDi8ueTPoY4x6XHZNFYByaNiOhzKEajkRU+NQJ5Zo+xkLprBs4BSX80hoOq50V1G+9jlMEG9CllSaMPsZqhXPb1aNsmxcsZjxXAySczzUBjVI01u9b2+rr8d4GrPCE47YIE5ioT9oFjDbht3V7P0Zg1RZwX7lZU/gYa2FVAp86wXhN8/ptoLcEltze0c0NT83cNeUei5X4ymzsZ7MX2bTsRbaP+wF4MsI+knuAf5qhN2hWTxs290Wf75GAivpbLkLZPmBZYTjG1z500gMsJ7meefgD7crUKHcBKkupdiS35cTWv4C4TO9V+fB14e/kF1C0fRR/AgwA7m2Y/yta4uQAAAAASUVORK5CYII=) no-repeat; */
+        }
 
 
 
         .input-box {
+            display: flex;
             position: fixed;
             right: .2667rem;
             bottom: 1.3333rem;
@@ -86,7 +104,7 @@
         }
 
         .input-box input:nth-of-type(2) {
-            width: 100%;
+            flex: 1;
         }
 
         .input-box button:active {
@@ -158,63 +176,10 @@
             display: block;
         }
 
-        .axis span{
+        .axis span {
             margin: 0 .0267rem;
         }
-
-
     </style>
-
-
-</head>
-
-<body>
-    <section class="region-1">
-        <div class="header"></div>
-
-        <div class="main">
-            <div class="caption">
-                <span>原函數</span>
-                <span>新函數</span>
-                <span>開口方向</span>
-                <span>頂點</span>
-                <span>最大值</span>
-                <span>最小值</span>
-                <span>操作</span>
-            </div>
-        </div>
-
-        <div class="input-box">
-            <button type="button" id="y">y=</button>
-            <button type="button" id="x-squared">x²</button>
-            <button type="button" id="x">x</button>
-            <input type="button" id="backSpace" value="C">
-
-            <button type="button" id="nine">9</button>
-            <button type="button" id="eight">8</button>
-            <button type="button" id="seven">7</button>
-            <button type="button" id="plus">+</button>
-
-            <button type="button" id="four">4</button>
-            <button type="button" id="five">5</button>
-            <button type="button" id="six">6</button>
-            <button type="button" id="minus">-</button>
-
-            <button type="button" id="one">1</button>
-            <button type="button" id="two">2</button>
-            <button type="button" id="three">3</button>
-            <button type="button" id="zero">0</button>
-
-            <input type="button" id="answer" value="Answer">
-        </div>
-    </section>
-
-
-    <section class="region-2">        
-    </section>
-
-
-
 
     <script>
         (function flexible(window, document) {//首先是一个立即执行函数，执行的时候传入参数window,document
@@ -265,23 +230,82 @@
         }(window, document))
 
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.1/math.js"></script>
+</head>
+
+<body>
+    <section class="region-1">
+        <div class="text-area"><span></span><a href="javascript:;">清空</a></div>
+        <div class="main">
+            <div class="caption">
+                <span>原函數</span>
+                <span>新函數</span>
+                <span>開口方向</span>
+                <span>頂點</span>
+                <span>最大值</span>
+                <span>最小值</span>
+                <span>操作</span>
+            </div>
+        </div>
+
+        <div class="input-box">
+            <button type="button" id="y">y=</button>
+            <button type="button" id="x-squared">x²</button>
+            <button type="button" id="x">x</button>
+            <input type="button" id="backSpace" value="C">
+
+            <button type="button" id="nine">9</button>
+            <button type="button" id="eight">8</button>
+            <button type="button" id="seven">7</button>
+            <button type="button" id="plus">+</button>
+
+            <button type="button" id="four">4</button>
+            <button type="button" id="five">5</button>
+            <button type="button" id="six">6</button>
+            <button type="button" id="minus">-</button>
+
+            <button type="button" id="one">1</button>
+            <button type="button" id="two">2</button>
+            <button type="button" id="three">3</button>
+            <button type="button" id="division">/</button>
+
+            <button type="button" id="zero">0</button>
+            <input type="button" id="answer" value="Answer">
+        </div>
+    </section>
+
+
+    <section class="region-2">
+    </section>
+
+
+
+
+
     <script>
-        obj1 = /^y=([+-]?\d+)x²([+]\d+|[-]\d+)x([+]\d+|[-]\d+)/    // 2x²+4x-5
-        obj2 = /^y=([+-]?)x²([+]\d+|[-]\d+)x([+]\d+|[-]\d+)/       // x²+4x-5
-        obj3 = /^y=([+-]?)x²([+-]?)x([+]\d+|[-]\d+)/               // x²+x-5
-        obj4 = /^y=([+-]?\d+)x²([+-]?)x([+]\d+|[-]\d+)/               // 2x²+x-5
-        regionOne = document.querySelector(".region-1")
-        regionTwo = document.querySelector(".region-2")
-        textArea = document.querySelector(".header")
-        btns = document.querySelectorAll("button")
+        let obj1 = /^y=([+-]?\d+|[+-]?\d+[/]\d+)x²([+-]\d+|[+-]\d+[/]\d+)x([+-]\d+|[+-]\d+[/]\d+)$/    // y=2x²+4x-5 or y=1/2x²+1/2x-1/2
+        let obj2 = /^y=([+-]?)x²([+-]\d+|[+-]\d+[/]\d+)x([+-]\d+|[+-]\d+[/]\d+)$/       // y=x²+4x-5 or  y=x²+1/2x-1/2
+        let obj3 = /^y=([+-]?)x²([+-]?)x([+-]\d+|[+-]\d+[/]\d+)$/               // y=x²+x-5 or y=x²+x-1/2
+        let obj4 = /^y=([+-]?\d+|[+-]?\d+[/]\d+)x²([+-]?)x([+-]\d+|[+-]\d+[/]\d+)$/               // y=2x²+x-5 or y=2x²+x-1/2 
 
-        main = document.querySelector(".main")
-        rows = document.querySelectorAll("[class^=row]")
-        
+       
+        let regionOne = document.querySelector(".region-1")
+        let regionTwo = document.querySelector(".region-2")
+        let textArea = document.querySelector(".text-area span")
+        let btns = document.querySelectorAll("button")
 
-        btnBackSpace = document.getElementById("backSpace").addEventListener("click", () => {
-            length = textArea.textContent.length
+        let main = document.querySelector(".main")
+        let rows = document.querySelectorAll("[class^=row]")
+
+
+        let clear = document.querySelector(".text-area a").addEventListener("click", () => {
+            textArea.textContent = ""
+        })
+
+        let btnBackSpace = document.getElementById("backSpace").addEventListener("click", () => {
+            let length = textArea.textContent.length
             textArea.textContent = textArea.textContent.slice(0, length - 1)
+            // textArea.textContent = ""
 
         })
 
@@ -295,47 +319,67 @@
         }
 
 
+        function displayNumber(obj) {
+            sign = obj.s > 0 ? true : false
+            if (obj.n === obj.d) {
+                obj = 1
+            } else if (obj.d === 1) {
+                obj = obj.n
+            } else {
+                obj = obj.n + "/" + obj.d
+            }
+            if (sign === true) {
+                obj = "+" + obj
+            } else {
+                obj = "-" + obj
+            }
+            obj = +obj === 0 ? 0 : obj
+            return obj
+        }
 
         function method(equation) {
-            let d = null
-            let k = null
+            let flag = false
+            if (equation.a > 0) {
+                flag = true
+            }
             let result = []
-            equation.b = equation.b / equation.a
-            d = (equation.b / 2) ** 2
-            k = equation.a < 0 ? equation.c + Math.abs(equation.a * d) : equation.c - Math.abs(equation.a * d)
+            let a = math.fraction(equation.a)
+            let b = math.fraction(equation.b).div(a)
+            let c = math.fraction(equation.c)
 
+            let d = math.fraction(b.div(2).pow(2))
+            let k = flag === true ? c.sub(a.mul(d)) : c.add(a.abs().mul(d))
 
-            if (equation.b > 0 && k > 0) {
-                // alert(`解为：${equation.a}(x+${equation.b / 2})²+${k}`)
-                result.push(`y=${equation.a}(x+${equation.b / 2})²+${k}`)
-            } else if (equation.b < 0 && k < 0) {
-                // alert(`解为：${equation.a}(x${equation.b / 2})²${k}`)
-                result.push(`y=${equation.a}(x${equation.b / 2})²${k}`)
-            } else if (equation.b > 0 && k < 0) {
-                // alert(`解为：${equation.a}(x+${equation.b / 2})²${k}`)
-                result.push(`y=${equation.a}(x+${equation.b / 2})²${k}`)
-            } else if (equation.b < 0 && k > 0) {
-                // alert(`解为：${equation.a}(x${equation.b / 2})²+${k}`)
-                result.push(`y=${equation.a}(x${equation.b / 2})²+${k}`)
-            } else if (equation.b > 0 && k == 0) {
-                result.push(`y=${equation.a}(x+${equation.b / 2})²`)
-            } else if (equation.b < 0 && k == 0) {
-                result.push(`y=${equation.a}(x${equation.b / 2})²`)
+            let e1 = displayNumber(a)
+            let e2 = displayNumber(b.div(2))
+            let e3 = displayNumber(k)
+
+            if (e1[0] === "+") {
+                e1 = e1.slice(1)
             }
 
-
+            if (e3 === 0) {
+                result.push(`${e1}(x${e2})²`)
+            } else {
+                result.push(`${e1}(x${e2})²${e3}`)
+            }
+            if (e2[0] == "+") {
+                e2 = e2.replace("+", "-")
+            } else {
+                e2 = e2.replace("-", "+")
+            }
 
             if (equation.a > 0) {
                 result.push("向上")
-                result.push(`(${-equation.b / 2}, ${k})`)
-                result.push("")
-                result.push(k)
+                result.push(`(${e2}, ${e3})`)
+                result.push("無")
+                result.push(e3)
 
             } else {
                 result.push("向下")
-                result.push(`(${-equation.b / 2}, ${k})`)
-                result.push(k)
-                result.push("")
+                result.push(`(${e2}, ${e3})`)
+                result.push(e3)
+                result.push("無")
             }
             return result
         }
@@ -343,18 +387,21 @@
 
         function detail() {
             regionOne.style.display = "none"
-            values = this.parentNode.parentNode.children
+            let values = this.parentNode.parentNode.children
 
-            baseValues = values[3].textContent.replace("(", "").replace(")", "").split(",") 
-            a = +/([+-]*\d+)[(]/.exec(values[1].textContent)[1]
-            h = +baseValues[0]
-            k = +baseValues[1]
-            console.log(a, h, k);
-            
-            result = []
+            let baseValues = values[3].textContent.replace("(", "").replace(")", "").split(",")
+            let a = math.fraction(eval(/([+-]?\d+|[+-]?\d+[/]\d+)[(]/.exec(values[1].textContent)[1]))
+            let h = math.fraction(eval(baseValues[0]))
+            let k = math.fraction(eval(baseValues[1]))
+            // console.log(a, h, k);
 
-            for (let i = 1; i < 3; i++){
-                result.push(a * (h + i + -h)**2  + k)
+            let result = []
+
+            for (let i = 1; i < 3; i++) {
+                i = math.fraction(i)
+                m = i.pow(2).mul(a).add(k)
+                // result.push(a * (h + i + -h) ** 2 + k)
+                result.push(m)
             }
 
             regionTwo.insertAdjacentHTML("beforeend", `
@@ -364,14 +411,15 @@
                 <div>新函數：${values[1].textContent}</div>
                 <div>開口方向：${values[2].textContent}</div>
                 <div>頂點坐標：${values[3].textContent}</div>
+                <div>對稱軸：x=${displayNumber(h)}</div>
                 <div>最大值：${values[4].textContent}</div>
                 <div>最小值：${values[5].textContent}</div>
-                <div class="axis">圖形坐標：
-                    <span>(${h - 2}, ${result[1]})</span>
-                    <span>(${h - 1}, ${result[0]})</span>
-                    <span>(${h}, ${k})</span>
-                    <span>(${h + 1}, ${result[0]})</span>
-                    <span>(${h + 2}, ${result[1]})</span></div>
+                <div class="axis">圖形坐標：<br>
+                    <span>(${displayNumber(h.sub(2))}, ${displayNumber(math.fraction(result[1]))})</span><br>
+                    <span>(${displayNumber(h.sub(1))}, ${displayNumber(math.fraction(result[0]))})</span><br>
+                    <span>(${displayNumber(h)}, ${displayNumber(k)})</span><br>
+                    <span>(${displayNumber(h.add(1))}, ${displayNumber(math.fraction(result[0]))})</span><br>
+                    <span>(${displayNumber(h.add(2))}, ${displayNumber(math.fraction(result[1]))})</span></div>
                 <a href="javascript:;">返回</a>
             </div>`)
             regionTwo.style.display = "block"
@@ -383,43 +431,44 @@
         }
 
         function back() {
-            detailArea = document.querySelector(".detail-area").remove()
+            let detailArea = document.querySelector(".detail-area").remove()
             regionTwo.style.display = "none"
             regionOne.style.display = "block"
         }
 
-        btnAnswer = document.getElementById("answer").addEventListener("click", () => {
-            text = textArea.textContent
-            equation = {}
-            if (obj1.test(text) === true) {
+        let btnAnswer = document.getElementById("answer").addEventListener("click", () => {
+            let text = textArea.textContent
+            let equation = {}
+            let values
+            if (obj1.test(text) === true) {   // y=2x²+4x-5 or y=1/2x²+1/2x-1/2
                 values = obj1.exec(text)
-                equation.a = +values[1]
-                equation.b = +values[2]
-                equation.c = +values[3]
+                equation.a = eval(values[1])
+                equation.b = eval(values[2])
+                equation.c = eval(values[3])
                 // method(equation)
-            } else if (obj2.test(text) === true) {
+            } else if (obj2.test(text) === true) {   // y=x²+4x-5 or  y=x²+1/2x-1/2
                 values = obj2.exec(text)
                 equation.a = +(values[1] + 1) // +("" + 1)
-                equation.b = +values[2]
-                equation.c = +values[3]
+                equation.b = eval(values[2])
+                equation.c = eval(values[3])
                 // method(equation)
-            } else if (obj3.test(text) === true) {
+            } else if (obj3.test(text) === true) {  // y=x²+x-5 or y=x²+x-1/2
                 values = obj3.exec(text)
                 equation.a = +(values[1] + 1)
                 equation.b = +(values[2] + 1)
-                equation.c = +values[3]
+                equation.c = eval(values[3])
                 // method(equation)
-            } else if (obj4.test(text) === true) {
+            } else if (obj4.test(text) === true) { // y=2x²+x-5 or y=2x²+x-1/2 
                 values = obj4.exec(text)
-                equation.a = +values[1]
+                equation.a = eval(values[1])
                 equation.b = +(values[2] + 1)
-                equation.c = +values[3]
+                equation.c = eval(values[3])
                 // method(equation)
             } else {
                 return false
             }
 
-            result = method(equation)
+            let result = method(equation)
 
 
             main.insertAdjacentHTML("beforeend",
@@ -434,8 +483,8 @@
             </div>`
             )
 
-            links = document.querySelectorAll("[class^=row] a")
-            links[links.length-1].addEventListener("click", detail)
+            let links = document.querySelectorAll("[class^=row] a")
+            links[links.length - 1].addEventListener("click", detail)
         })
     </script>
 </body>
