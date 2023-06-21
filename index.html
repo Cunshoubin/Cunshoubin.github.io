@@ -319,7 +319,7 @@
         }
 
 
-        function displayNumber(obj) {
+        function displayNumber(obj, flag=true) {
             sign = obj.s > 0 ? true : false
             if (obj.n === obj.d) {
                 obj = 1
@@ -329,7 +329,9 @@
                 obj = obj.n + "/" + obj.d
             }
             if (sign === true) {
-                obj = "+" + obj
+                if (flag == true){
+                    obj = "+" + obj
+                }
             } else {
                 obj = "-" + obj
             }
@@ -350,23 +352,24 @@
             let d = math.fraction(b.div(2).pow(2))
             let k = flag === true ? c.sub(a.mul(d)) : c.add(a.abs().mul(d))
 
-            let e1 = displayNumber(a)
+            let e1 = displayNumber(a, false)
             let e2 = displayNumber(b.div(2))
             let e3 = displayNumber(k)
 
-            if (e1[0] === "+") {
-                e1 = e1.slice(1)
-            }
+            // if (e1[0] === "+") {
+            //     e1 = e1.slice(1)
+            // }
 
             if (e3 === 0) {
                 result.push(`${e1}(x${e2})²`)
             } else {
                 result.push(`${e1}(x${e2})²${e3}`)
             }
+            e3 = displayNumber(k, false)  // 重新显示符号
             if (e2[0] == "+") {
                 e2 = e2.replace("+", "-")
             } else {
-                e2 = e2.replace("-", "+")
+                e2 = e2.replace("-", "")
             }
 
             if (equation.a > 0) {
@@ -402,6 +405,7 @@
                 m = i.pow(2).mul(a).add(k)
                 // result.push(a * (h + i + -h) ** 2 + k)
                 result.push(m)
+                // console.log(m);
             }
 
             regionTwo.insertAdjacentHTML("beforeend", `
@@ -411,15 +415,15 @@
                 <div>新函數：${values[1].textContent}</div>
                 <div>開口方向：${values[2].textContent}</div>
                 <div>頂點坐標：${values[3].textContent}</div>
-                <div>對稱軸：x=${displayNumber(h)}</div>
+                <div>對稱軸：x=${displayNumber(h, false)}</div>
                 <div>最大值：${values[4].textContent}</div>
                 <div>最小值：${values[5].textContent}</div>
                 <div class="axis">圖形坐標：<br>
-                    <span>(${displayNumber(h.sub(2))}, ${displayNumber(math.fraction(result[1]))})</span><br>
-                    <span>(${displayNumber(h.sub(1))}, ${displayNumber(math.fraction(result[0]))})</span><br>
-                    <span>(${displayNumber(h)}, ${displayNumber(k)})</span><br>
-                    <span>(${displayNumber(h.add(1))}, ${displayNumber(math.fraction(result[0]))})</span><br>
-                    <span>(${displayNumber(h.add(2))}, ${displayNumber(math.fraction(result[1]))})</span></div>
+                    <span>(${displayNumber(h.sub(2), false)}, ${displayNumber(result[1], false)})</span><br>
+                    <span>(${displayNumber(h.sub(1), false)}, ${displayNumber(result[0], false)})</span><br>
+                    <span>(${displayNumber(h, false)}, ${displayNumber(k, false)})</span><br>
+                    <span>(${displayNumber(h.add(1), false)}, ${displayNumber(result[0], false)})</span><br>
+                    <span>(${displayNumber(h.add(2), false)}, ${displayNumber(result[1], false)})</span></div>
                 <a href="javascript:;">返回</a>
             </div>`)
             regionTwo.style.display = "block"
@@ -474,7 +478,7 @@
             main.insertAdjacentHTML("beforeend",
                 `<div class="row-${rows.length + 1}">
                 <span>${textArea.textContent}</span>
-                <span>${result[0]}</span>
+                <span>y=${result[0]}</span>
                 <span>${result[1]}</span>
                 <span>${result[2]}</span>
                 <span>${result[3]}</span>
