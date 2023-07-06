@@ -356,10 +356,6 @@
             let e2 = displayNumber(b.div(2))
             let e3 = displayNumber(k)
 
-            // if (e1[0] === "+") {
-            //     e1 = e1.slice(1)
-            // }
-
             if (e3 === 0) {
                 result.push(`${e1}(x${e2})²`)
             } else {
@@ -469,7 +465,7 @@
                 equation.c = eval(values[3])
                 // method(equation)
             } else {
-                return false
+                return alert("輸入有誤，請重新輸入！")
             }
 
             let result = method(equation)
